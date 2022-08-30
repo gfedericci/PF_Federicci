@@ -1,0 +1,32 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title>Login</mat-card-title>
+        <form [formGroup]="formLogin" (ngSubmit)="submit()">
+            <mat-form-field appearance="fill">
+                <mat-label>Usuario</mat-label>
+                <input matInput formControlName="user">
+                <mat-error *ngIf="formLogin.get('user')?.hasError('required')">
+                  Campo <strong>requerido</strong>.
+                </mat-error>
+                <mat-error *ngIf="formLogin.get('user')?.hasError('minlength')">
+                  Mín. <strong>2 caracteres</strong>.
+                </mat-error>
+              </mat-form-field> 
+            
+              <mat-form-field appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input matInput formControlName="pass" type="password">
+                <mat-error *ngIf="formLogin.get('pass')?.hasError('required')">
+                  Campo <strong>requerido</strong>.
+                </mat-error>
+                <mat-error *ngIf="formLogin.get('pass')?.hasError('minlength')">
+                  Mín. <strong>2 caracteres</strong>.
+                </mat-error>
+              </mat-form-field> 
+              <p class="errorMessage" *ngIf="wrongUser && submited">* Usuario incorrecto</p>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">Ingresar</button>
+        </mat-card-actions>
+        </form>
+      </mat-card>
+    </div>

@@ -1,0 +1,51 @@
+<h1 titulo>{{ index == -1 ? 'Alta ' : 'Modificación '}} de curso</h1>
+<form [formGroup]="formCurso" (ngSubmit)="submit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre">
+        <mat-error *ngIf="formCurso.get('nombre')?.hasError('required')">
+          Campo <strong>requerido</strong>.
+        </mat-error>
+      </mat-form-field> 
+
+    <mat-form-field appearance="fill">
+        <mat-label>Horas por clase</mat-label>
+        <input matInput formControlName="horas">
+        <mat-error *ngIf="formCurso.get('horas')?.hasError('required')">
+          Campo <strong>requerido</strong>.
+        </mat-error>
+        <mat-error *ngIf="formCurso.get('horas')?.hasError('min')">
+          Mín. <strong>1 hora</strong>.
+        </mat-error>
+        <mat-error *ngIf="formCurso.get('horas')?.hasError('max')">
+          Máx. <strong>4 horas</strong>.
+        </mat-error>
+      </mat-form-field> 
+
+      <mat-form-field appearance="fill">
+        <mat-label>Cantidad de clases</mat-label>
+        <input matInput formControlName="clases">
+        <mat-error *ngIf="formCurso.get('clases')?.hasError('required')">
+          Campo <strong>requerido</strong>.
+        </mat-error>
+        <mat-error *ngIf="formCurso.get('clases')?.hasError('min')">
+          Mín. <strong>1 clase</strong>.
+        </mat-error>
+        <mat-error *ngIf="formCurso.get('clases')?.hasError('max')">
+          Máx. <strong>20 clases</strong>.
+        </mat-error>
+      </mat-form-field> 
+
+      <mat-form-field appearance="fill">
+        <mat-label>Profesor</mat-label>
+        <input matInput formControlName="profesor">
+        <mat-error *ngIf="formCurso.get('profesor')?.hasError('required')">
+          Campo <strong>requerido</strong>.
+        </mat-error>
+        <mat-error *ngIf="formCurso.get('profesor')?.hasError('minlength')">
+          Mín. <strong>2 caracteres</strong>.
+        </mat-error>
+      </mat-form-field> 
+    
+      <button mat-flat-button color="primary" type="submit">{{ index == -1 ? 'Registrar' : 'Actualizar'}}</button>
+</form>

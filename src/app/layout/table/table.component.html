@@ -1,0 +1,59 @@
+<h1 titulo>Alumnos registrados</h1>
+
+<button mat-raised-button color="primary" [routerLink]="['/alumnos/nuevo']">Nuevo alumno</button>
+
+<table mat-table [dataSource]="alumnos$" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="NombreCompleto">
+    <th mat-header-cell *matHeaderCellDef> Nombre Completo </th>
+    <td mat-cell *matCellDef="let alumno"> {{alumno | nombreCompleto}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.nombre}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Apellido">
+    <th mat-header-cell *matHeaderCellDef> Apellido </th>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.apellido}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="FechaNacimiento">
+    <th mat-header-cell *matHeaderCellDef> Fecha Nacimiento </th>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.fechaNacimiento | date:'dd/MM/yyyy'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Curso">
+    <th mat-header-cell *matHeaderCellDef> Curso </th>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.curso}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Activo">
+    <th mat-header-cell *matHeaderCellDef> Activo </th>
+    <td mat-cell *matCellDef="let alumno">
+      <mat-icon aria-hidden="true" [color]="alumno.activo ? 'primary' : 'warn'">{{alumno.activo ? 'thumb_up' : 'thumb_down'}}
+      </mat-icon>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let alumno; let i = index">
+      <button mat-icon-button color='primary' [routerLink]="['/alumnos/editar', i]">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color='warn' (click)="eliminar(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+  <tr mat-row *matRowDef="let alumno; columns: columnas;"></tr>
+</table>

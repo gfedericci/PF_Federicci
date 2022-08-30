@@ -1,0 +1,21 @@
+<mat-sidenav-container>
+  <mat-sidenav opened mode="side">
+    <mat-list>
+      <mat-list-item>
+        <button mat-button color="primary" routerLink='alumnos/listadoAlumnos'>Listado Alumnos</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button color="primary" routerLink='cursos/listadoCursos'>Listado Cursos</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button color="primary" routerLink='usuarios/listadoUsuarios'>Listado Usuarios</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-raised-button color="primary" (click)="logout()">logout</button>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

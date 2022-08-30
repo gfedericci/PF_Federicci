@@ -1,0 +1,35 @@
+mat-card {
+    margin: 60px;
+    max-width: 800px;
+    min-width: 600px;
+    align-items: center;
+}
+
+form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    padding: 16px;
+    text-align: center;
+    margin: auto;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+mat-slide-toggle {
+    margin-top: 16px;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.errorMessage {
+    color: red;
+}

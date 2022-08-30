@@ -37,7 +37,7 @@ export class CursosService {
   public addCurso(curso: Curso) {
     this.httpClient.post<Curso>(this.urlAPI, curso).subscribe(datos => {
       curso.id = datos.id;
-      this._snackBar.open('Curso registrado.');
+      this._snackBar.open('El curos ha sido registrado');
       this.store.dispatch(addCurso({ curso: curso }));
     });
   }
@@ -47,7 +47,7 @@ export class CursosService {
       .subscribe(curso => {
         this.httpClient.delete(this.urlAPI + '/' + curso.id)
           .subscribe(() => {
-            this._snackBar.open('Curso eliminado.')
+            this._snackBar.open('El curso ha sido eliminado')
             this.store.dispatch(removeCurso({ id }));
           });
       }).unsubscribe();
@@ -59,7 +59,7 @@ export class CursosService {
         this.httpClient.put<Curso>(this.urlAPI + '/' + curso.id, cursoActualizado)
           .subscribe(() => {
             cursoActualizado.id = curso.id;
-            this._snackBar.open('Curso actualizado.');
+            this._snackBar.open('El curso ha sido actualizado');
             this.store.dispatch(updateCurso({ id, curso: cursoActualizado }));
           });
       })
@@ -115,7 +115,7 @@ export class CursosService {
 
     promise.then(() => {
       if (selected.length)
-        this._snackBar.open('Alumnos agregados.');
+        this._snackBar.open('Los alumnos han sido agregados');
     });
   }
 
@@ -124,7 +124,7 @@ export class CursosService {
     this.httpClient
       .delete(url)
       .subscribe(() => {
-        this._snackBar.open('Alumno quitado.');
+        this._snackBar.open('El alumno ha sido quitado');
       });
     this.alumnosCurso.splice(index, 1);
   };

@@ -32,7 +32,7 @@ export class AlumnosService {
     this.httpClient.post<Alumno>(this.urlAPI, alumno)
                   .subscribe((nuevo) => {
                       alumno.id = nuevo.id;
-                      this._snackBar.open('Alumno registrado');
+                      this._snackBar.open('El alumno ha sido registrado');
                       this.store.dispatch(addCursante({alumno: alumno}));
     });
   }
@@ -44,7 +44,7 @@ export class AlumnosService {
                   this.httpClient
                   .delete(this.urlAPI + '/' + alumno.id)
                   .subscribe(() => { 
-                    this._snackBar.open('Alumno eliminado');
+                    this._snackBar.open('El alumno ha sido eliminado');
                     this.store.dispatch(removeCursante({id}));
                   });
               }).unsubscribe();

@@ -35,7 +35,7 @@ addUsuario(nuevoUsuario: Usuario) {
    .post<Usuario>(this.LINK, nuevoUsuario)
    .subscribe(datos => {
     nuevoUsuario.id = datos.id;
-     this._snackBar.open('Usuario registrado.')
+     this._snackBar.open('El usuario ha sido registrado')
      this.store.dispatch(addUsuario({usuario: nuevoUsuario}));
    });
 }
@@ -48,11 +48,11 @@ eliminarUser(id: number) {
                this.httpClient
                .delete(url)
                .subscribe(() =>{
-                 this._snackBar.open('Usuario eliminado.');
+                 this._snackBar.open('El usuario ha sido eliminado');
                  this.store.dispatch(removeUsuario({id}));
                });
              } else {
-               this._snackBar.open('No se puede eliminar el único usuario existente.');
+               this._snackBar.open('No se puede eliminar el único usuario existente');
              }
            })
            .unsubscribe();

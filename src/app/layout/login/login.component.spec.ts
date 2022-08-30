@@ -9,6 +9,7 @@ import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -23,7 +24,8 @@ describe('LoginComponent', () => {
         RouterTestingModule.withRoutes([{ path: '/alumnos/listadoAlumnos'}]),
         OverlayModule,
         BrowserAnimationsModule,
-        SharedModule
+        SharedModule,
+        HttpClientModule
       ],
       providers: [
         FormBuilder,

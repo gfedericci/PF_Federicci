@@ -45,7 +45,6 @@ export class FormAlumnoComponent implements OnInit {
       apellido: this.fb.control(alumno.apellido, [Validators.required, Validators.minLength(2)]),
       fechaNacimiento: this.fb.control(alumno.fechaNacimiento, [Validators.required]),
       email: this.fb.control(alumno.email, [Validators.required, Validators.email]),
-      curso: this.fb.control(alumno.curso, [Validators.required]),
       activo: this.fb.control(alumno.activo, []),
       index: this.fb.control(alumno.id, [])
     });
